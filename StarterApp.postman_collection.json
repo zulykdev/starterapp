@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "26387e7a-29bf-4693-90ed-1d9014e29b0a",
+		"name": "StarterApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45431252",
+		"_collection_link": "https://restless-moon-9659554.postman.co/workspace/Zulyk.Dev's-Workspace~3d67426b-e27e-43ca-8917-91b96c28f62a/collection/45431252-26387e7a-29bf-4693-90ed-1d9014e29b0a?action=share&source=collection_link&creator=45431252"
+	},
+	"item": [
+		{
+			"name": "Create customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"email\": \"hanz@asdfg.org\",\r\n    \"password\": \"hunter21\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/v1/customers/onboarding",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"customers",
+						"onboarding"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
