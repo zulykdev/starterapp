@@ -141,6 +141,21 @@ graph TD
     SW -- "Documenta API" --> UC
     C -- "Mensajes y constantes" --> US
 ```
+---
+
+### Puesta en marca:
+Para iniciar la aplicación, asegúrate de tener Java 17 o superior y Maven instalado. Luego, ejecuta el siguiente comando en la raíz del proyecto:
+
+```bash
+mvn clean package
+mvn clean install
+```
+Una vez dentro del proyecto ejecutar el archivo: StarterApplication.java
+
+Utiliza H2 (BD) in memory por lo que no es necesario configurar una base de datos externa. La aplicación se ejecutará en el puerto 8081 por defecto.
+Importar el postman collection: StarterApp.postman_collection y ejecutar.
+
+---
 
 **Leyenda rápida:**
 - **DTO:** Objetos de transferencia de datos (entrada/salida).
