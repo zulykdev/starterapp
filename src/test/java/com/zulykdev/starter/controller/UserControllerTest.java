@@ -38,10 +38,9 @@ class UserControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    @DisplayName("POST /v1/customers/onboarding - Should return 201 with UserResponse")
+    @DisplayName("POST /api/v1/customer-onboarding/customers/initiation - Should return 201 with UserResponse")
     void register_ShouldReturnCreatedUserResponse() throws Exception {
         // Arrange
-        UUID fakeId = UUID.randomUUID();
         UserRequest request = new UserRequest(
                 "Hans",
                 "hans@demo.com",
@@ -54,7 +53,7 @@ class UserControllerTest {
         Mockito.when(userService.registerUser(any(UserRequest.class))).thenReturn(response);
 
         // Act + Assert
-        mockMvc.perform(post("/v1/customers/onboarding")
+        mockMvc.perform(post("/api/v1/customer-onboarding/customers/initiation")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andDo(print())

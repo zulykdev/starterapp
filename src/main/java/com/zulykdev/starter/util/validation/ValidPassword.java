@@ -8,12 +8,14 @@ import jakarta.validation.Payload;
 
 import java.lang.annotation.*;
 
+import static com.zulykdev.starter.util.Constants.INVALID_PASSWORD_MESSAGE;
+
 @Constraint(validatedBy = PasswordValidator.class)
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface ValidPassword {
-    String message() default "Invalid password format";
+    String message() default INVALID_PASSWORD_MESSAGE;
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

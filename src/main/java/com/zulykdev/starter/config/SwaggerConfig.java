@@ -11,8 +11,8 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI().info(new Info()
-                .title("User Onboarding API")
+                .title("Customer Onboarding API")
                 .version("1.0")
-                .description("API RESTful para registro de usuarios"));
+                .description("API RESTful para administración de clientes en el proceso de incorporación según el estándar BIAN."));
     }
 }

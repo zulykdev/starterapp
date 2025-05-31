@@ -1,18 +1,13 @@
 package com.zulykdev.starter.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PhoneRequest {
-
-    public PhoneRequest(String number, String citycode, String contrycode) {
-        this.number = number;
-        this.citycode = citycode;
-        this.contrycode = contrycode;
-    }
 
     @NotBlank
     private String number;
