@@ -14,6 +14,7 @@ Starterapp es una aplicación base para gestionar el registro y autenticación d
 - **Auditoría y seguimiento:** Almacena información sobre el último inicio de sesión y estado de activación del usuario.
 - **API Documentada:** Incluye configuración Swagger/OpenAPI para explorar y probar los endpoints de la API.
 - **Pruebas unitarias:** Contiene pruebas unitarias para los servicios principales.
+- **Estandarizacion:** Se utilizo BIAN (Banking Industry Architecture Network) como referencia para la estructura y nomenclatura de los endpoints.
 
 ---
 
@@ -26,6 +27,7 @@ Starterapp es una aplicación base para gestionar el registro y autenticación d
 - **Spring Security:** Proporciona seguridad a la aplicación, gestionando autenticación y autorización de endpoints.
 - **JWT (Json Web Token):** Utilizado para la generación y validación de tokens de sesión de usuario (`JwtUtil.java`).
 - **Swagger/OpenAPI:** Expone documentación interactiva de la API para facilitar el desarrollo y pruebas (`SwaggerConfig.java`).
+- **URL swagger:** `{server:port}/swagger-ui/index.html` para acceder a la documentación de la API.
 - **MapStruct:** Mapea objetos entre DTOs y entidades de dominio para facilitar la transferencia de datos (`UserMapper.java`).
 - **Validaciones personalizadas:** Anotaciones y utilidades para validar emails y contraseñas con reglas propias.
 - **Lombok:** Reduce la verbosidad del código mediante la generación automática de getters/setters y constructores.
@@ -44,10 +46,9 @@ Starterapp es una aplicación base para gestionar el registro y autenticación d
 
 ## Ejemplo de uso de endpoint
 
-### Registro de usuario
+### Realiza la operación de 'initiate' para el proceso de incorporación de clientes según el estándar BIAN.
 
-**POST** `/v1/customers/onboarding`
-
+**POST** `/api/v1/customer-onboarding/customers/initiation`
 - **Descripción:** Permite registrar un nuevo usuario en el sistema.
 - **Content-Type:** `application/json`
 - **Respuesta exitosa:** `201 Created` y cuerpo JSON con los datos del usuario registrado y su token.
@@ -71,23 +72,43 @@ Starterapp es una aplicación base para gestionar el registro y autenticación d
 **Ejemplo de Response:**
 ```json
 {
-    "id": "uuid-generado",
+    "id": "81b454ad-78a4-4c4a-81fc-ddb8fa9c3cac",
     "created": "2025-05-29T10:51:09Z",
     "modified": "2025-05-29T10:51:09Z",
     "last_login": "2025-05-29T10:51:09Z",
-    "token": "jwt-token-generado",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYW56QGFzZGlpLm9yZyIsImlhdCI6MTc0ODY3NDI0MywiZXhwIjoxNzQ4Njc3ODQzfQ.u-MZ-vWQLc0EGxMbo0RS0kdDJjCIycCA5eOWcmRGoCs",
     "isactive": true
 }
 ```
+**Validaciones: Definidos por parametros**
+- El campo `email` debe ser un email válido y único. Regla de validación:
+
+```sh'
+[A-Za-z0-9._%+-]+          # Nombre del usuario
+@                          # El símbolo @ obligatorio
+[A-Za-z0-9.-]+             # Dominio (ej: gmail, yahoo)
+\.                         # Punto obligatorio antes del TLD
+[A-Za-z]{2,6}              # 2 a 6 letras (ej: com, org, net)
+```
+- El campo de `password` debe cumplir con los requisitos de seguridad:
+```sh'
+(?=.*[A-Za-z])  # Al menos una letra (mayúscula o minúscula)
+(?=.*\d)        # Al menos un dígito
+[A-Za-z\d]{8,}  # Solo letras y dígitos, mínimo 8 caracteres
+```
+
+```sh
 
 **Errores comunes:**
 - Si el email ya existe:
-  ```json
   {
     "mensaje": "El correo electrónico ya está registrado"
   }
-  ```
-- Si el email o contraseña no cumplen las validaciones, se retorna un error de validación estándar.
+```
+- Si el email no cumplen las validaciones, se retorna email proporcionado no es válido.
+- Si el password no cumple con las validaciones, retorna: password no cumple con los requisitos de seguridad.
+- Si los campos de teléfonos no cumplen con las validaciones, retorna: <campo> - no debe estar vacío.
+- Si el telefono no contiene valores, retorna: <phones> - no debe estar vacío.
 
 ## Arquitectura de la Solución
 
@@ -143,7 +164,7 @@ graph TD
 ```
 ---
 
-### Puesta en marca:
+### Puesta en marcha:
 Para iniciar la aplicación, asegúrate de tener Java 17 o superior y Maven instalado. Luego, ejecuta el siguiente comando en la raíz del proyecto:
 
 ```bash

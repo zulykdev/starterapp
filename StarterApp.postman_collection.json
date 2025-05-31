@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"email\": \"hanz@asdfg.org\",\r\n    \"password\": \"hunter21\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"email\": \"hanz@asdii.org\",\r\n    \"password\": \"hunter21\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567899\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -22,15 +22,234 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8081/v1/customers/onboarding",
+					"raw": "localhost:8081/api/v1/customer-onboarding/customers/initiation",
 					"host": [
 						"localhost"
 					],
 					"port": "8081",
 					"path": [
+						"api",
 						"v1",
+						"customer-onboarding",
 						"customers",
-						"onboarding"
+						"initiation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customer - Error by Email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"password\": \"hunter21\",\r\n    \"email\": \"zulyk@\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/customer-onboarding/customers/initiation",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customer-onboarding",
+						"customers",
+						"initiation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customer - Error by Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"password\": \"hunter@1\",\r\n    \"email\": \"zulyk@dev.com\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/customer-onboarding/customers/initiation",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customer-onboarding",
+						"customers",
+						"initiation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customer - Error by contrycode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"password\": \"hunter21\",\r\n    \"email\": \"zulyk@asdf.com\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/customer-onboarding/customers/initiation",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customer-onboarding",
+						"customers",
+						"initiation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customer - Error by citycode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"password\": \"hunter21\",\r\n    \"email\": \"zulyk@asdf.com\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"  \",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/customer-onboarding/customers/initiation",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customer-onboarding",
+						"customers",
+						"initiation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customer - Error by duplicate fields",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"password\": \"hunter21\",\r\n    \"password\": \"hunter51\",\r\n    \"email\": \"zulyk@asdf.com\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/customer-onboarding/customers/initiation",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customer-onboarding",
+						"customers",
+						"initiation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customer - Error by citycode contrycode null",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"password\": \"hunter21\",\r\n    \"email\": \"zulyk@asdf.com\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/customer-onboarding/customers/initiation",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customer-onboarding",
+						"customers",
+						"initiation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customer - Error by phones Empty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"password\": \"hunter21\",\r\n    \"email\": \"zulyk@asdf.com\",\r\n    \"phones\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/customer-onboarding/customers/initiation",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customer-onboarding",
+						"customers",
+						"initiation"
 					]
 				}
 			},
